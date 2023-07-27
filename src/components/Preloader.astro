@@ -1,0 +1,30 @@
+---
+
+---
+<div id="up-preloader" class="preloader"></div>
+<div id="down-preloader" class="preloader"></div>
+
+<script>
+import { gsap } from "gsap";
+let tl=gsap.timeline()
+tl.to("#up-preloader",{y: "-100%",duration : 1, delay: 1})
+.to("#down-preloader",{y: "100%",duration : 1, delay: 1},0)
+
+
+</script>
+<style>
+    .preloader{
+        width:100vw;
+height: 50vh;
+background-color: var(--preloader);
+position: absolute;
+z-index: 100;
+color: var(--preloader);
+    }
+    #up-preloader{
+top:0;
+    }
+    #down-preloader{
+bottom:0;
+    }
+</style>

@@ -1,0 +1,63 @@
+---
+import MenuButton from "./MenuButton.astro";
+
+---
+
+<header class="header" data-open="false" >
+    <div class="header-wrap">
+<a href="/" id="logo">Fred Brossard</a>
+<MenuButton/>
+</div>
+</header>
+
+<script>
+import { underlineLink } from "@/utils/underlineLink";
+
+const header= document.querySelectorAll(".header")
+
+
+underlineLink()
+
+
+
+header.forEach( (el) =>{
+    el.addEventListener("mouseover", (e) =>{
+        const ball= document.getElementById("ball")
+        ball!.dataset.imagepop = "false"
+    })
+})
+header.forEach( (el) =>{
+    el.addEventListener("mouseout", (e) =>{
+        const ball= document.getElementById("ball")
+        ball!.dataset.imagepop = "true"
+    })
+})
+
+
+</script>
+
+
+
+<style>
+    header{
+        display: flex;
+        justify-content: center;
+           position: relative;
+        top:0;
+        left: 0;
+        width: 100%;
+        padding: 2rem 0;
+        z-index:75;
+    }
+    .header-wrap{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        width: 90%;
+    }
+    .name{
+        padding: 5px;
+    }
+    
+</style>

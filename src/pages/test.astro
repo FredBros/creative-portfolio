@@ -1,0 +1,65 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import Cursor from "@/components/Cursor.astro"
+---
+
+<Layout title="FredBrowww portfolio">
+	
+<body>
+    
+
+    <script>
+    // Fonction pour créer un élément SVG avec des attributs donnés
+    function createSVGElement(tag, attributes) {
+      const element = document.createElementNS("http://www.w3.org/2000/svg", tag);
+      for (const key in attributes) {
+        element.setAttribute(key, attributes[key]);
+      }
+      return element;
+    }
+
+    // Créer le cercle avec la classe "displacement"
+    const circleMask = createSVGElement("circle", {
+      cx: "200",
+      cy: "200",
+      r: "100",
+      fill: "white",
+      class: "displacement",
+    });
+
+    // Créer l'image
+    const image = createSVGElement("image", {
+      "xlink:href": "https://images.unsplash.com/photo-1630563451961-ac2ff27616ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFwcGxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=400&h=400&q=60",
+      width: "400",
+      height: "400",
+      mask: "url(#circleMask)",
+    });
+
+    // Créer le masque et lui ajouter le cercle
+    const mask = createSVGElement("mask", { id: "circleMask" });
+    mask.appendChild(circleMask);
+
+    // Créer l'élément <defs> et lui ajouter le masque
+    const defs = createSVGElement("defs");
+    defs.appendChild(mask);
+
+    // Créer le SVG et lui ajouter les éléments précédents
+    const svgElement = createSVGElement("svg", {
+      width: "400",
+      height: "400",
+      version: "1.1",
+      xmlns: "http://www.w3.org/2000/svg",
+    });
+    svgElement.appendChild(defs);
+    svgElement.appendChild(image);
+
+    // Ajouter le SVG au corps du document
+    document.body.appendChild(svgElement);
+    console.log(svgElement)
+  </script>
+</body>
+
+
+
+
+</Layout>

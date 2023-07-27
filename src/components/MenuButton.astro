@@ -1,0 +1,47 @@
+<button class="menuButton" data-open="false">
+    <span class="menu-burger-wrapper">
+        <span class="menu-burger-span">Menu</span>
+        <span class="menu-burger-span" id="open">Close</span>
+    </span>
+</button>
+<script>
+
+import { gsap } from "gsap";
+const tlopen= gsap.timeline({paused:true});
+tlopen.to(".menu-burger-wrapper",{y:"-50%"})
+
+// Sélectionner le bouton par sa classe
+const menuButton = document.querySelector('.menuButton');
+
+// Fonction à exécuter lorsqu'on clique sur le bouton
+function handleClick() {
+    if (menuButton instanceof HTMLElement) {
+  // Changer la valeur de l'attribut data-open à "false"
+  if (menuButton.dataset.open === "false"){ 
+      tlopen.play()
+    menuButton.dataset.open = "true"
+    console.log(menuButton!.dataset.open)
+}
+  else{ 
+      tlopen.reverse()
+    menuButton.dataset.open = "false";
+  console.log(menuButton.dataset.open)}
+    }
+}
+
+// Ajouter l'écouteur d'événement pour le clic sur le bouton
+menuButton && menuButton.addEventListener('click', handleClick);
+
+
+
+</script>
+<style>
+    .menuButton{
+        overflow: hidden;
+        height: 24px;
+    }
+    .menu-burger-wrapper{
+        display: flex;
+        flex-direction: column;
+    }
+</style>

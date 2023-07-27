@@ -1,0 +1,16 @@
+@import "reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@200;400&display=swap');
+
+
+:root {
+--preloader: #647275;
+}
+
+.anton{
+    font-family: 'Anton', sans-serif;
+}
+
+body {  
+font-family: 'Poppins', sans-serif;
+overflow: hidden;
+}
